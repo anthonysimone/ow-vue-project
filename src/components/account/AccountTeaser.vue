@@ -64,10 +64,17 @@ export default {
 
 </script>
 
-<style>
+<style lang="scss">
+$tier-bronze: #d07a6b; //cc7167
+$tier-silver: #f2fdff;
+$tier-gold: #ffffb4;
+$tier-plat: #faffff;
 .account-teaser {
   display: flex;
   align-items: center;
+  &.tier-bronze {
+
+  }
 }
 .account-name h4 {
   font-weight: 900;
