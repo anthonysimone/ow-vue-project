@@ -27,6 +27,11 @@ export default new Router({
       component: () => import('./views/Accounts.vue')
     },
     {
+      path: '/accounts/:id',
+      name: 'account',
+      component: () => import('./views/Account.vue')
+    },
+    {
       path: '/heroes',
       name: 'heroes',
       component: () => import('./views/Heroes.vue')

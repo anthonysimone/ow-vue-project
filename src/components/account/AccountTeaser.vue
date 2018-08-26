@@ -15,14 +15,15 @@
       </div>
     </div>
     <div class="account-name">
-      <h4>{{ account.name }} <span class="account-level">{{ account.prestige * 100 + account.level }}</span></h4>
+      <h4>{{ account.name }} <span class="account-level">({{ account.prestige * 100 + account.level }})</span></h4>
+      <p v-show="includeLink"><router-link :to="{name: 'account', params: {id: account.name}}">Go to detail page</router-link></p>
     </div>
   </div>
 </template>
 
 <script>
 export default {
-  props: ['account'],
+  props: ['account', 'includeLink'],
 
   computed: {
     prestigeTier() {
@@ -39,49 +40,28 @@ export default {
           return 'none';
       }
     }
-  },
-
-  methods: {
-    getPrestigeTier() {
-      switch (Math.floor(this.account.prestige / 6)) {
-        case (0):
-          return 'bronze';
-        case (1):
-          return 'silver';
-        case (2):
-          return 'gold';
-        case (3):
-          return 'plat';
-        case (4):
-          break;
-      }
-    }
   }
-
-
 }
-
-
 </script>
 
 <style lang="scss">
-$tier-bronze: #d07a6b; //cc7167
+$tier-bronze: #EFCEB1; //cc7167 f2e3d5 d07a6b
 $tier-silver: #f2fdff;
 $tier-gold: #ffffb4;
 $tier-plat: #faffff;
 .account-teaser {
   display: flex;
   align-items: center;
-  &.tier-bronze {
-
-  }
+}
+.account-name {
+  margin-left: 10px;
 }
 .account-name h4 {
   font-weight: 900;
   font-style: italic;
   font-size: 30px;
   letter-spacing: 0.5px;
-  margin-left: 10px;
+  line-height: 1;
 }
 .account-name h4 .account-level {
   color: #f99e1a;
@@ -142,6 +122,21 @@ $tier-plat: #faffff;
   border: 1.5px solid #2c3e50;
   border-radius: 5px;
   transform: translate3d(-50%, -5%, 0);
+  font-weight: 600;
+  font-size: 14px;
+  .tier-bronze & {
+    color: #fff;
+    background: linear-gradient(to bottom, $tier-bronze 0%, $tier-bronze 47.5%, darken($tier-bronze, 30%) 52.75%);
+  }
+  .tier-silver & {
+    background: linear-gradient(to bottom, $tier-silver 0%, $tier-silver 47.5%, darken($tier-silver, 30%) 52.75%);
+  }
+  .tier-gold & {
+    background: linear-gradient(to bottom, $tier-gold 0%, $tier-gold 47.5%, darken($tier-gold, 30%) 52.75%);
+  }
+  .tier-plat & {
+    background: linear-gradient(to bottom, $tier-plat 0%, $tier-plat 47.5%, darken($tier-plat, 30%) 52.75%);
+  }
 }
 .mask-top,
 .mask-bottom {

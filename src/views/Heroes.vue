@@ -1,7 +1,8 @@
 <template>
   <div class="heroes">
-    <div class="container">
-      <div class="message" v-for="hero in heroes">
+    <page-header pageTitle="Heroes" subTitle="Select Your Champion"></page-header>
+    <div class="container hero-body">
+      <div class="message" v-for="hero in heroes" :key="hero.name">
         <div class="message-header">{{ hero.name }}</div>
         <div class="message-body">{{ hero.description }}</div>
       </div>
@@ -13,10 +14,13 @@
 // @ is an alias to /src
 // import HelloWorld from '@/components/HelloWorld.vue'
 import Hero from '@/models/Hero';
+import PageHeader from '@/components/elements/layout/PageHeader';
 
 export default {
   name: 'heroes',
-  components: {},
+  components: {
+    PageHeader
+  },
   data() {
     return {
       heroes: [],

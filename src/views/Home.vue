@@ -1,5 +1,6 @@
 <template>
   <div class="home">
+    <page-header pageTitle="Home" subTitle="Test"></page-header>
     <div class="hero-body">
       <div class="container has-text-centered">
         <h1 class="title">Homepage</h1>
@@ -9,3 +10,13 @@
     </div>
   </div>
 </template>
+
+<script>
+import PageHeader from '@/components/elements/layout/PageHeader';
+
+export default {
+  components: {
+    PageHeader
+  }
+}
+</script>
