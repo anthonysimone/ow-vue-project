@@ -37,12 +37,10 @@
 </template>
 
 <script>
-import accounts from '@/store/accounts';
-
 export default {
   data() {
     return {
-      accounts
+      accounts: this.$store.state.accounts
     }
   }
 }

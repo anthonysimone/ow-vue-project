@@ -62,7 +62,6 @@
 </template>
 
 <script>
-import accounts from '@/store/accounts';
 import Account from '@/models/Account';
 import AccountTeaser from '@/components/account/AccountTeaser';
 import PageHeader from '@/components/elements/layout/PageHeader';
@@ -81,7 +80,7 @@ export default {
       },
       waitingForResponse: false,
       accountInvalid: false,
-      accounts: accounts
+      accounts: this.$store.state.accounts
     }
   },
 
@@ -107,7 +106,7 @@ export default {
               // Add the region and platform as well for future reference
               response.data.region = this.newAccount.region;
               response.data.platform = this.newAccount.platform;
-              this.accounts.push(response.data);
+              this.$store.commit('addAccount', response.data);
               this.newAccount.id = '';
               this.waitingForResponse = false;
             }

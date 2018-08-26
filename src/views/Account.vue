@@ -69,7 +69,6 @@
 <script>
 import { distanceInWords } from 'date-fns';
 import Account from '@/models/Account';
-import accounts from '@/store/accounts';
 import PageHeader from '@/components/elements/layout/PageHeader';
 import StatItem from '@/components/elements/simple/StatItem';
 import PieChart from '@/components/d3/PieChart';
@@ -118,13 +117,9 @@ export default {
   data() {
     return {
       id: this.$route.params.id,
-      account: null,
+      account: this.$store.getters.getAccountById(this.$route.params.id),
       waitingForResponse: false,
     }
-  },
-
-  mounted() {
-    this.account = accounts.find(obj => obj.name === this.$route.params.id);
   }
 }
 </script>
