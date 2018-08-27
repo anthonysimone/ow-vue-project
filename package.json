@@ -2,10 +2,12 @@
   "name": "routing",
   "version": "0.1.0",
   "private": true,
+  "homepage": "git@github.com:anthonysimone/ow-vue-project",
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint",
+    "deploy": "node ./node_modules/vue-gh-pages/index.js"
   },
   "dependencies": {
     "axios": "^0.18.0",
@@ -24,6 +26,7 @@
     "@vue/cli-service": "^3.0.0-rc.12",
     "node-sass": "^4.9.3",
     "sass-loader": "^7.1.0",
+    "vue-gh-pages": "^1.18.2",
     "vue-template-compiler": "^2.5.17"
   },
   "eslintConfig": {
