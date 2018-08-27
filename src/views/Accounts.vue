@@ -12,7 +12,8 @@
                 <div class="control">
                   <input type="text" class="input" v-model="newAccount.id" name="newAccountId" @keyup="formUpdated">
                 </div>
-                <p v-show="accountInvalid" class="help is-danger">An account with with the above username, platform, and region cannot be found. Please double check capitalization and, region, and platform.</p>
+                <p v-show="accountInvalid" class="help is-danger">An account with the above username, platform, and region cannot be found. Please double check capitalization and, region, and platform.</p>
+                <p v-show="accountAlreadyAdded" class="help is-danger">This account has already been added. You can only add an account once.</p>
               </div>
               <div class="field">
                 <label class="label" for="newAccountPlatform">Platform</label>
@@ -80,13 +81,14 @@ export default {
       },
       waitingForResponse: false,
       accountInvalid: false,
+      accountAlreadyAdded: false,
       accounts: this.$store.state.accounts
     }
   },
 
   computed: {
     formIsDisabled() {
-      return this.waitingForResponse || this.accountInvalid;
+      return this.waitingForResponse || this.accountInvalid || this.accountAlreadyAdded;
     }
   },
 
@@ -99,6 +101,9 @@ export default {
               // no account found
               this.waitingForResponse = false;
               this.accountInvalid = true;
+            } else if (this.$store.getters.getAccountById(this.newAccount.id)) {
+              this.waitingForResponse = false;
+              this.accountAlreadyAdded = true;
             } else {
               // account found
               // Add the update date
@@ -115,6 +120,7 @@ export default {
 
     formUpdated() {
       this.accountInvalid = false;
+      this.accountAlreadyAdded = false;
     }
   }
 }

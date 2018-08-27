@@ -72,7 +72,7 @@ $tier-plat: #faffff;
 
 
 .account-avatar-wrapper {
-  width: 100px;
+  flex: 0 0 100px;
 }
 .account-avatar {
   position: relative;

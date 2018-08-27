@@ -24,6 +24,9 @@
                 <router-link class="navbar-item" to="/about">About</router-link>
                 <router-link class="navbar-item" to="/accounts">Accounts</router-link>
                 <router-link class="navbar-item" to="/heroes">Heroes</router-link>
+                <span class="navbar-item">
+                  <button class="button is-primary is-inverted" @click="clearData">Clear Data</button>
+                </span>
               </div>
             </div>
           </div>
@@ -41,6 +44,12 @@ export default {
   data() {
     return {
       accounts: this.$store.state.accounts
+    }
+  },
+
+  methods: {
+    clearData() {
+      this.$ls.clear();
     }
   }
 }
