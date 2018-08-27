@@ -6,15 +6,27 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    // accounts: Vue.ls.get('accounts', []),
     accounts: [],
     userAccount: {}
   },
   plugins: [createPersistedState()],
   mutations: {
+    // Add a new account
     addAccount (state, account) {
       state.accounts.push(account);
-      // Vue.ls.set('accounts', state.accounts);
+    },
+
+    // Update an existing account
+    updateAccount (state, newData) {
+      if (this.getters.getAccountById(newData.name)) {
+        newData.lastUpdated = new Date();
+        Object.assign(this.getters.getAccountById(newData.name), newData);
+      }
+    },
+
+    // Clear all application state
+    clearState (state) {
+      state.accounts.splice(0, state.accounts.length);
     }
   },
   actions: {

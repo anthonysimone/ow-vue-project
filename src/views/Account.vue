@@ -97,8 +97,7 @@ export default {
               this.waitingForResponse = false;
             } else {
               // account found, merge objects
-              Object.assign(this.account, response.data);
-              this.account.lastUpdated = new Date();
+              this.$store.commit('updateAccount', response.data);
               this.waitingForResponse = false;
             }
           });

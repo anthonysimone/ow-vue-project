@@ -25,7 +25,7 @@
                 <router-link class="navbar-item" to="/accounts">Accounts</router-link>
                 <router-link class="navbar-item" to="/heroes">Heroes</router-link>
                 <span class="navbar-item">
-                  <button class="button is-primary is-inverted" @click="clearData">Clear Data</button>
+                  <button class="button is-primary is-inverted" @click="clearState">Clear Data</button>
                 </span>
               </div>
             </div>
@@ -48,8 +48,9 @@ export default {
   },
 
   methods: {
-    clearData() {
-      this.$ls.clear();
+    clearState() {
+      this.$store.commit('clearState');
+      alert('removing storage');
     }
   }
 }
