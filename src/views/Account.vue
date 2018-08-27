@@ -110,13 +110,15 @@ export default {
     },
     updateButtonText() {
       return this.waitingForResponse ? 'Waiting...' : 'Update Profile Stats';
+    },
+    account() {
+      return this.$store.getters.getAccountById(this.$route.params.id)
     }
   },
 
   data() {
     return {
       id: this.$route.params.id,
-      account: this.$store.getters.getAccountById(this.$route.params.id),
       waitingForResponse: false,
     }
   }

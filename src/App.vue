@@ -25,7 +25,7 @@
                 <router-link class="navbar-item" to="/accounts">Accounts</router-link>
                 <router-link class="navbar-item" to="/heroes">Heroes</router-link>
                 <span class="navbar-item">
-                  <button class="button is-primary is-inverted" @click="clearState">Clear Data</button>
+                  <confirmation-modal @confirmationSuccess="clearState" dialog-title="Warning!" dialog-body="You are about to delete all data you are currently tracking. You cannot undo this. Do you want to continue?"></confirmation-modal>
                 </span>
               </div>
             </div>
@@ -36,11 +36,18 @@
     <!-- end header and menu -->
 
     <router-view/>
+
+    <v-dialog></v-dialog>
   </div>
 </template>
 
 <script>
+import ConfirmationModal from '@/components/elements/functional/ConfirmationModal';
+
 export default {
+  components: {
+    ConfirmationModal
+  },
   data() {
     return {
       accounts: this.$store.state.accounts
@@ -50,7 +57,6 @@ export default {
   methods: {
     clearState() {
       this.$store.commit('clearState');
-      alert('removing storage');
     }
   }
 }
