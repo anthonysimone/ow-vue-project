@@ -1,4 +1,5 @@
-// vue.config.js
 module.exports = {
-  // baseUrl: ''
+  baseUrl: process.env.NODE_ENV === 'production'
+    ? '/ow-vue-project/'
+    : '/'
 }
