@@ -45,10 +45,6 @@ export default {
 </script>
 
 <style lang="scss">
-$tier-bronze: #EFCEB1; //cc7167 f2e3d5 d07a6b
-$tier-silver: #f2fdff;
-$tier-gold: #ffffb4;
-$tier-plat: #faffff;
 .account-teaser {
   display: flex;
   align-items: center;

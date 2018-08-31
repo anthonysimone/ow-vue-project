@@ -57,6 +57,6 @@ export default {
 
 <style lang="scss">
 .v--modal-overlay {
-  color: #222;
+  color: $body-font-color;
 }
 </style>

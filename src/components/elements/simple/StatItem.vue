@@ -28,7 +28,7 @@ export default {
     font-weight: 900;
     line-height: 1;
     font-style: italic;
-    color: #ce34da;
+    color: $ow-purple;
   }
 }
 </style>

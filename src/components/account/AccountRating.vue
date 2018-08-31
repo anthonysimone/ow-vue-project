@@ -33,7 +33,7 @@ export default {
   .rating {
     position: relative;
     display: inline-block;
-    color: #222;
+    color: $body-font-color;
     font-size: 26px;
     font-weight: 900;
     line-height: 1;
